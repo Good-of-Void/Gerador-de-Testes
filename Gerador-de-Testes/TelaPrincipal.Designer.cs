@@ -1,6 +1,6 @@
 ﻿namespace Gerador_de_Testes
 {
-    partial class Form1
+    partial class TelaPrincipal
     {
         /// <summary>
         ///  Required designer variable.
