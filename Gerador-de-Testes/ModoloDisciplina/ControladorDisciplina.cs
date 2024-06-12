@@ -24,9 +24,13 @@ namespace Gerador_de_Testes.ModoloDisciplina
             if (resultado != DialogResult.OK)
                 return;
 
-            //Disciplina novaDisciplina = telaDisciplina.
+            Disciplina novaDisciplina = telaDisciplina.Disciplina;
 
+            this.repositorioDisciplina.Cadastrar(novaDisciplina);
 
+            CarregarDadosTabela();
+
+            //tela principal istancia
         }
 
         public override void Editar()
@@ -42,6 +46,13 @@ namespace Gerador_de_Testes.ModoloDisciplina
         public override UserControl ObterListagem()
         {
             throw new NotImplementedException();
+        }
+
+        private void CarregarDadosTabela()
+        {
+            List<Disciplina> disciplina = repositorioDisciplina.SelecionarTodos();
+
+            TabelaDisciplina.AtualizarRegistros(disciplina);
         }
     }
 }
