@@ -1,7 +1,5 @@
-﻿
-using Gerador_de_Testes.ModoloMateria;
+﻿using Gerador_de_Testes.ModoloMateria;
 using Gerador_de_Testes.WinApp.Compartilhado;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gerador_de_Testes.ModoloQuestoes
 {
@@ -20,6 +18,9 @@ namespace Gerador_de_Testes.ModoloQuestoes
             Resposta = resposta;
             Alternativas = alternativas;
         }
+
+        //contrutor vazil
+        public Questao() { }
 
         public override List<string> Validar()
         {
