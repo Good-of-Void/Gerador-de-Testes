@@ -143,10 +143,7 @@ namespace Gerador_de_Testes.ModoloDisciplina
             ResumeLayout(false);
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

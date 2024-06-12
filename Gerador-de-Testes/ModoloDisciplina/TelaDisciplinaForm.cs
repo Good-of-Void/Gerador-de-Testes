@@ -1,25 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 
 namespace Gerador_de_Testes.ModoloDisciplina
 {
     public partial class TelaDisciplinaForm : Form
     {
-        public TelaDisciplinaForm()
+        private Disciplina disciplina;
+        private IRepositorioDisciplina repositorio;
+        private List<string> erros;
+
+        public Disciplina Disciplina
+        {
+            set
+            {
+                this.txtId.Text = value.Id.ToString();
+                this.txtNome.Text = value.Nome;
+            }
+            get
+            {
+                return this.disciplina;
+            }
+        }
+
+        public TelaDisciplinaForm(string tipo,IRepositorioDisciplina repositorio)
         {
             InitializeComponent();
+            this.Text = tipo;
+            this.repositorio = repositorio;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
+        }
 
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            this.EntradaDados();
+
+            if (erros.Count > 0) 
+            {
+                DialogResult = DialogResult.None;
+            }
+            DialogResult = DialogResult.OK;
+        }
+
+        private void EntradaDados()
+        {
+            disciplina = new(this.txtNome.Text);
+            erros = disciplina.Validar();
+
+            List<Disciplina> disciplinas = repositorio.SelecionarTodos();
+            foreach (Disciplina d in disciplinas)
+            {
+                if (disciplina.Nome.Equals(d.Nome))
+                {
+                    erros.Add("Disciplina com mesmo nome ja cadastrada");
+                    return;
+                }                   
+            }
         }
     }
 }
