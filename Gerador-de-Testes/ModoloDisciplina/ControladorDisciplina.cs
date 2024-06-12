@@ -75,7 +75,38 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm("Edição de Disciplina", RepositorioDisciplina);
+
+            int idSelecionado = TabelaDisciplina.ObterRegistroSelecionado();
+
+            Disciplina disciplinaSelecionada = RepositorioDisciplina.SelecionarPorId(idSelecionado);
+
+            if (disciplinaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma disciplina selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+               $"Você deseja realmente excluir a diciplina \"{disciplinaSelecionada.Nome}\"?",
+               "Confirmar Exclusão",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning
+           );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            RepositorioDisciplina.Excluir(disciplinaSelecionada.Id);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A disciplina \"{disciplinaSelecionada.Nome}\" foi excluida com sucesso!");
         }
 
         public override UserControl ObterListagem()
