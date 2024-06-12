@@ -42,6 +42,8 @@ namespace Gerador_de_Testes.ModoloDisciplina
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
 
                 DialogResult = DialogResult.None;
+                this.txtNome.Text = null;
+                return;
             }
             DialogResult = DialogResult.OK;
         }

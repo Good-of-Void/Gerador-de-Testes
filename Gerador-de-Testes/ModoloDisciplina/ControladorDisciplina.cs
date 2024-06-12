@@ -40,7 +40,37 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm("Edição de Disciplina", RepositorioDisciplina);
+            
+            int idSelecionado = TabelaDisciplina.ObterRegistroSelecionado();
+
+            Disciplina disciplinaSelecionada = RepositorioDisciplina.SelecionarPorId(idSelecionado);
+
+            if (disciplinaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma disciplina selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaDisciplina.Disciplina = disciplinaSelecionada;
+
+            DialogResult resultado = telaDisciplina.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Disciplina disciplinaEditada = telaDisciplina.Disciplina;
+
+            RepositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A disciplina \"{disciplinaEditada.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()
