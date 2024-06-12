@@ -5,8 +5,13 @@ namespace Gerador_de_Testes.ModoloDisciplina
 {
     public class ControladorDisciplina : ControladorBase
     {
-        private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioDisciplina RepositorioDisciplina;
         private TabelaDisciplinaUser TabelaDisciplina;
+
+        public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina)
+        {
+            this.RepositorioDisciplina = repositorioDisciplina;
+        }
         public override string TipoCadastro { get { return "Disciplina"; } }
 
         public override string ToolTipAdicionar { get { return "Cadastrar uma nova disciplina"; } }
@@ -17,7 +22,7 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
         public override void Adicionar()
         {
-            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm("Cadastro de Disciplina",repositorioDisciplina);
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm("Cadastro de Disciplina",RepositorioDisciplina);
 
             DialogResult resultado = telaDisciplina.ShowDialog();
 
@@ -26,11 +31,11 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
             Disciplina novaDisciplina = telaDisciplina.Disciplina;
 
-            this.repositorioDisciplina.Cadastrar(novaDisciplina);
+            this.RepositorioDisciplina.Cadastrar(novaDisciplina);
 
             CarregarDadosTabela();
 
-            //tela principal istancia
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A disciplina \"{novaDisciplina.Nome}\" foi criado com sucesso!");
         }
 
         public override void Editar()
@@ -45,12 +50,17 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
         public override UserControl ObterListagem()
         {
-            throw new NotImplementedException();
+            if (TabelaDisciplina == null)
+                TabelaDisciplina = new TabelaDisciplinaUser();
+
+            CarregarDadosTabela();
+
+            return TabelaDisciplina;
         }
 
         private void CarregarDadosTabela()
         {
-            List<Disciplina> disciplina = repositorioDisciplina.SelecionarTodos();
+            List<Disciplina> disciplina = RepositorioDisciplina.SelecionarTodos();
 
             TabelaDisciplina.AtualizarRegistros(disciplina);
         }

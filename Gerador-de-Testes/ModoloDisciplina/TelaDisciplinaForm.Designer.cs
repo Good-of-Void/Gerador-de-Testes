@@ -30,12 +30,12 @@ namespace Gerador_de_Testes.ModoloDisciplina
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
-            txtId = new TextBox();
-            label2 = new Label();
-            txtNome = new TextBox();
-            btnCancelar = new Button();
             btnGravar = new Button();
+            btnCancelar = new Button();
+            txtNome = new TextBox();
+            label2 = new Label();
+            txtId = new TextBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,53 +52,19 @@ namespace Gerador_de_Testes.ModoloDisciplina
             panel1.Name = "panel1";
             panel1.Size = new Size(776, 297);
             panel1.TabIndex = 0;
-            panel1.Paint += this.panel1_Paint;
             // 
-            // label1
+            // btnGravar
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(0, 173, 181);
-            label1.Location = new Point(28, 44);
-            label1.Name = "label1";
-            label1.Size = new Size(37, 32);
-            label1.TabIndex = 0;
-            label1.Text = "Id";
-            // 
-            // txtId
-            // 
-            txtId.BackColor = Color.FromArgb(238, 238, 238);
-            txtId.Enabled = false;
-            txtId.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtId.ForeColor = Color.FromArgb(0, 173, 181);
-            txtId.Location = new Point(71, 41);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(77, 39);
-            txtId.TabIndex = 1;
-            txtId.Text = "0";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(0, 173, 181);
-            label2.Location = new Point(28, 137);
-            label2.Name = "label2";
-            label2.Size = new Size(239, 32);
-            label2.TabIndex = 0;
-            label2.Text = "Nome da Disciplina";
-            // 
-            // txtNome
-            // 
-            txtNome.BackColor = Color.FromArgb(238, 238, 238);
-            txtNome.Enabled = false;
-            txtNome.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtNome.ForeColor = Color.FromArgb(0, 173, 181);
-            txtNome.Location = new Point(273, 137);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(421, 39);
-            txtNome.TabIndex = 1;
-            txtNome.Text = "0";
+            btnGravar.FlatAppearance.BorderSize = 0;
+            btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
+            btnGravar.Location = new Point(484, 236);
+            btnGravar.Name = "btnGravar";
+            btnGravar.Size = new Size(130, 48);
+            btnGravar.TabIndex = 1;
+            btnGravar.Text = "Gravar";
+            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -113,18 +79,49 @@ namespace Gerador_de_Testes.ModoloDisciplina
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // btnGravar
+            // txtNome
             // 
-            btnGravar.FlatAppearance.BorderSize = 0;
-            btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
-            btnGravar.Location = new Point(484, 236);
-            btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 2;
-            btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
-            btnGravar.Click += this.btnGravar_Click;
+            txtNome.BackColor = Color.FromArgb(238, 238, 238);
+            txtNome.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNome.ForeColor = Color.FromArgb(0, 173, 181);
+            txtNome.Location = new Point(273, 137);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(421, 39);
+            txtNome.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(0, 173, 181);
+            label2.Location = new Point(28, 137);
+            label2.Name = "label2";
+            label2.Size = new Size(239, 32);
+            label2.TabIndex = 0;
+            label2.Text = "Nome da Disciplina";
+            // 
+            // txtId
+            // 
+            txtId.BackColor = Color.FromArgb(238, 238, 238);
+            txtId.Enabled = false;
+            txtId.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtId.ForeColor = Color.FromArgb(0, 173, 181);
+            txtId.Location = new Point(71, 41);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(77, 39);
+            txtId.TabIndex = 1;
+            txtId.Text = "0";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(0, 173, 181);
+            label1.Location = new Point(28, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(37, 32);
+            label1.TabIndex = 0;
+            label1.Text = "Id";
             // 
             // TelaDisciplinaForm
             // 
@@ -143,12 +140,6 @@ namespace Gerador_de_Testes.ModoloDisciplina
             ResumeLayout(false);
         }
 
-        
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         #endregion
 

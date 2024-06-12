@@ -39,6 +39,8 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
             if (erros.Count > 0) 
             {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
                 DialogResult = DialogResult.None;
             }
             DialogResult = DialogResult.OK;
