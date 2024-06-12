@@ -39,8 +39,10 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             statusStrip1 = new StatusStrip();
+            toolStripMenuPrincipal = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -68,6 +70,7 @@
             stripMenuDisciplina.Name = "stripMenuDisciplina";
             stripMenuDisciplina.Size = new Size(224, 32);
             stripMenuDisciplina.Text = "Disciplinas";
+            stripMenuDisciplina.Click += stripMenuDisciplina_Click;
             // 
             // stripMenuMateria
             // 
@@ -75,6 +78,7 @@
             stripMenuMateria.Name = "stripMenuMateria";
             stripMenuMateria.Size = new Size(224, 32);
             stripMenuMateria.Text = "Materias";
+            stripMenuMateria.Click += stripMenuMateria_Click;
             // 
             // stripMenuQuestoes
             // 
@@ -82,6 +86,7 @@
             stripMenuQuestoes.Name = "stripMenuQuestoes";
             stripMenuQuestoes.Size = new Size(224, 32);
             stripMenuQuestoes.Text = "Questões";
+            stripMenuQuestoes.Click += stripMenuQuestoes_Click;
             // 
             // stripMenuTeste
             // 
@@ -89,6 +94,7 @@
             stripMenuTeste.Name = "stripMenuTeste";
             stripMenuTeste.Size = new Size(224, 32);
             stripMenuTeste.Text = "Testes";
+            stripMenuTeste.Click += stripMenuTeste_Click;
             // 
             // toolStrip1
             // 
@@ -136,11 +142,19 @@
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
-            statusStrip1.Location = new Point(0, 428);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuPrincipal });
+            statusStrip1.Location = new Point(0, 416);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.Size = new Size(800, 34);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripMenuPrincipal
+            // 
+            toolStripMenuPrincipal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStripMenuPrincipal.Name = "toolStripMenuPrincipal";
+            toolStripMenuPrincipal.Size = new Size(167, 28);
+            toolStripMenuPrincipal.Text = "Gerador de Testes";
             // 
             // TelaPrincipal
             // 
@@ -160,6 +174,8 @@
             menuStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -177,5 +193,6 @@
         private ToolStripButton btnAdd;
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;
+        private ToolStripStatusLabel toolStripMenuPrincipal;
     }
 }

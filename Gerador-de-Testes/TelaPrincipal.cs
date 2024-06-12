@@ -6,5 +6,25 @@ namespace Gerador_de_Testes
         {
             InitializeComponent();
         }
+
+        private void stripMenuDisciplina_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stripMenuMateria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stripMenuQuestoes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stripMenuTeste_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
