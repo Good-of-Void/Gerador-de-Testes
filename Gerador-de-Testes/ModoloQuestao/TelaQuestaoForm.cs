@@ -1,8 +1,6 @@
-﻿using Gerador_de_Testes.ModoloDisciplina;
-using Gerador_de_Testes.ModoloMateria;
+﻿using Gerador_de_Testes.ModoloMateria;
 using Gerador_de_Testes.ModoloQuestoes;
 using Gerador_de_Testes.WinApp.ModoloMateria;
-using System.Windows.Forms;
 
 namespace Gerador_de_Testes.ModoloQuestao
 {
@@ -17,14 +15,24 @@ namespace Gerador_de_Testes.ModoloQuestao
             set
             {
                 this.txtId.Text = value.Id.ToString();
-                this.cboxMateria.SelectedItem = value.Materia;
+
+                for (int i = 0; i < cboxMateria.Items.Count; i++)
+                {
+                    if (this.cboxMateria.Items[i].ToString().Equals(value.Materia.Nome + ", " + value.Materia.Serie))
+                    {
+                        this.cboxMateria.SelectedIndex = i;
+                    }
+                }
+
                 this.txtEnunciado.Text = value.Enunciado;
+
                 for (int i = 0; i < value.Alternativas.Count; i++)
                 {
                     this.alternativasCheckedList.Items[i] = value.Alternativas[i];
                     if (value.Alternativas[i] == value.Resposta)
                     {
                         this.alternativasCheckedList.SelectedIndex = i;
+                        this.alternativasCheckedList.SetItemChecked(i, true);
                     }
                 }
             }
@@ -67,6 +75,9 @@ namespace Gerador_de_Testes.ModoloQuestao
 
             else if (alternativasCheckedList.Items[3].Equals("d) "))
                 alternativasCheckedList.Items[3] = "d) " + this.textAlternativa.Text;
+
+            this.textAlternativa.Text = null;
+            this.textAlternativa.Select();
         }
 
         private void brnRemover_Click(object sender, EventArgs e)

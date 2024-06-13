@@ -45,12 +45,72 @@ namespace Gerador_de_Testes.ModoloQuestao
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm("Cadastro de Questão", RepositorioMateria);
+
+            int idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
+
+            Questao questaoSelecionada = RepositorioQuestao.SelecionarPorId(idSelecionado);
+
+            if (questaoSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma disciplina selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaQuestao.Questao = questaoSelecionada;
+
+            DialogResult resultado = telaQuestao.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Questao questaoEditada = telaQuestao.Questao;
+
+            RepositorioQuestao.Editar(questaoSelecionada.Id, questaoEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A questão \"{questaoSelecionada.Enunciado}\" foi editada com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+
+            int idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
+
+            Questao questaoSelecionada = RepositorioQuestao.SelecionarPorId(idSelecionado);
+
+            if (questaoSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma disciplina selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+               $"Você deseja realmente excluir a questão \"{questaoSelecionada.Enunciado}\"?",
+               "Confirmar Exclusão",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning
+           );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            RepositorioQuestao.Excluir(questaoSelecionada.Id);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A questão \"{questaoSelecionada.Enunciado}\" foi excluida com sucesso!");
         }
 
         public override UserControl ObterListagem()
