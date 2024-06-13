@@ -1,13 +1,15 @@
-﻿
+﻿using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.ModoloMateria;
 using Gerador_de_Testes.ModoloQuestoes;
+using Gerador_de_Testes.WinApp.ModoloMateria;
+using System.Windows.Forms;
 
 namespace Gerador_de_Testes.ModoloQuestao
 {
     public partial class TelaQuestaoForm : Form
     {
         private Questao questao;
-        //pirvate repositorioMateria
+        private IRepositorioMateria repositorioMateria;
         private List<string> erros;
 
         public Questao Questao
@@ -31,23 +33,24 @@ namespace Gerador_de_Testes.ModoloQuestao
                 return questao;
             }
         }
-        public TelaQuestaoForm(string tipo)
+        //contrutor
+        public TelaQuestaoForm(string tipo, IRepositorioMateria repositorioMateria)
         {
             InitializeComponent();
             this.Text = tipo;
-            //this.repositorio = repositorio;
+            this.repositorioMateria = repositorioMateria;
             carregarMateria();
         }
 
         private void carregarMateria()
         {
-            List<Materia> materias = new List<Materia>();
+            List<Materia> materias = repositorioMateria.SelecionarTodos();
 
             cboxMateria.Items.Clear();
+
             foreach (Materia m in materias)
             {
-                //m.nome
-                this.cboxMateria.Items.Add(m);
+                this.cboxMateria.Items.Add(m.Nome + ", " + m.Serie);
             }
         }
 
@@ -83,6 +86,8 @@ namespace Gerador_de_Testes.ModoloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+
+
             this.EntradaDados();
 
             if (erros.Count > 0)
@@ -98,22 +103,59 @@ namespace Gerador_de_Testes.ModoloQuestao
 
         private void EntradaDados()
         {
-            this.questao.Materia = (Materia)cboxMateria.SelectedItem;
-            
-            this.questao.Enunciado = this.txtEnunciado.Text;
-            
-            this.questao.Resposta = this.alternativasCheckedList.SelectedItem.ToString();
-            
+            this.questao = new Questao(
+                this.PegarMateria(),
+                this.txtEnunciado.Text,
+                this.alternativasCheckedList.SelectedItem.ToString(),
+                this.PegarListaAlternativas()
+                );
+            erros = questao.Validar();
+        }
+
+        private List<string> PegarListaAlternativas()
+        {
+            List<string> alt = new List<string>();
             for (int i = 0; i < 4; i++)
             {
                 if (alternativasCheckedList.Items[i].ToString().Length > 3)
-                    this.questao.Alternativas.Add(alternativasCheckedList.Items[i].ToString());
+                    alt.Add(alternativasCheckedList.Items[i].ToString());
             }
+            return alt;
+        }
+
+        private Materia PegarMateria()
+        {
+            List<Materia> materias = repositorioMateria.SelecionarTodos();
+            string item;
+            foreach (Materia m in materias)
+            {
+                item = m.Nome + ", " + m.Serie;
+                if (item.Equals(this.cboxMateria.SelectedItem))
+                    return m;
+                
+            }
+            return null;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void alternativasCheckedList_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked)
+            {
+                // Desmarque todos os outros itens
+                for (int i = 0; i < alternativasCheckedList.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                    {
+                        alternativasCheckedList.SetItemChecked(i, false);
+                    }
+                }
+            }
+            this.btnGravar.Enabled = true;
         }
     }
 }

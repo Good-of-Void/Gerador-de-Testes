@@ -2,7 +2,7 @@
 
 namespace Gerador_de_Testes.ModoloQuestao
 {
-    internal interface IRepositorioQuestao
+    public interface IRepositorioQuestao
     {
         void Cadastrar(Questao novaQuestao);
         bool Editar(int id, Questao questaoEditado);

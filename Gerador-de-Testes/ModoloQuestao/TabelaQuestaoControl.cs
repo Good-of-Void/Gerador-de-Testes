@@ -20,7 +20,7 @@ namespace Gerador_de_Testes.ModoloQuestao
             grid.Rows.Clear();
 
             foreach (Questao q in Questoes)
-                grid.Rows.Add(q.Id, q.Materia.ToString, q.Resposta);
+                grid.Rows.Add(q.Id, q.Materia.Nome,q.Enunciado, q.Resposta);
         }
 
         public int ObterRegistroSelecionado()

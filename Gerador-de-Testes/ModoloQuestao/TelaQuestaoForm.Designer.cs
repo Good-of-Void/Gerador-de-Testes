@@ -31,6 +31,7 @@
             panel1 = new Panel();
             btnAdd = new Button();
             groupBox1 = new GroupBox();
+            label5 = new Label();
             brnRemover = new Button();
             alternativasCheckedList = new CheckedListBox();
             textAlternativa = new TextBox();
@@ -75,13 +76,14 @@
             btnAdd.Location = new Point(606, 277);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(130, 48);
-            btnAdd.TabIndex = 6;
+            btnAdd.TabIndex = 3;
             btnAdd.Text = "Adicionar";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(brnRemover);
             groupBox1.Controls.Add(alternativasCheckedList);
             groupBox1.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -93,15 +95,25 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Alternativas";
             // 
+            // label5
+            // 
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(0, 173, 181);
+            label5.Location = new Point(20, 223);
+            label5.Name = "label5";
+            label5.Size = new Size(423, 57);
+            label5.TabIndex = 7;
+            label5.Text = "A alternativa que estiver selecionada será guardada como a resposta!";
+            // 
             // brnRemover
             // 
             brnRemover.FlatAppearance.BorderSize = 0;
             brnRemover.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             brnRemover.ForeColor = Color.FromArgb(0, 173, 181);
-            brnRemover.Location = new Point(557, 223);
+            brnRemover.Location = new Point(566, 232);
             brnRemover.Name = "brnRemover";
             brnRemover.Size = new Size(130, 45);
-            brnRemover.TabIndex = 7;
+            brnRemover.TabIndex = 5;
             brnRemover.Text = "Remover";
             brnRemover.UseVisualStyleBackColor = true;
             brnRemover.Click += brnRemover_Click;
@@ -109,14 +121,17 @@
             // alternativasCheckedList
             // 
             alternativasCheckedList.BackColor = Color.FromArgb(57, 62, 70);
+            alternativasCheckedList.BorderStyle = BorderStyle.None;
+            alternativasCheckedList.CheckOnClick = true;
             alternativasCheckedList.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             alternativasCheckedList.ForeColor = Color.FromArgb(0, 173, 181);
             alternativasCheckedList.FormattingEnabled = true;
             alternativasCheckedList.Items.AddRange(new object[] { "a) ", "b) ", "c) ", "d) " });
             alternativasCheckedList.Location = new Point(20, 48);
             alternativasCheckedList.Name = "alternativasCheckedList";
-            alternativasCheckedList.Size = new Size(676, 169);
-            alternativasCheckedList.TabIndex = 0;
+            alternativasCheckedList.Size = new Size(676, 165);
+            alternativasCheckedList.TabIndex = 4;
+            alternativasCheckedList.ItemCheck += alternativasCheckedList_ItemCheck;
             // 
             // textAlternativa
             // 
@@ -127,7 +142,7 @@
             textAlternativa.Location = new Point(159, 283);
             textAlternativa.Name = "textAlternativa";
             textAlternativa.Size = new Size(421, 39);
-            textAlternativa.TabIndex = 4;
+            textAlternativa.TabIndex = 2;
             // 
             // cboxMateria
             // 
@@ -138,17 +153,18 @@
             cboxMateria.Location = new Point(159, 78);
             cboxMateria.Name = "cboxMateria";
             cboxMateria.Size = new Size(381, 39);
-            cboxMateria.TabIndex = 3;
+            cboxMateria.TabIndex = 0;
             // 
             // btnGravar
             // 
+            btnGravar.Enabled = false;
             btnGravar.FlatAppearance.BorderSize = 0;
             btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
             btnGravar.Location = new Point(484, 673);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 1;
+            btnGravar.TabIndex = 6;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -161,7 +177,7 @@
             btnCancelar.Location = new Point(632, 673);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(130, 48);
-            btnCancelar.TabIndex = 2;
+            btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -176,7 +192,7 @@
             txtEnunciado.Multiline = true;
             txtEnunciado.Name = "txtEnunciado";
             txtEnunciado.Size = new Size(603, 97);
-            txtEnunciado.TabIndex = 0;
+            txtEnunciado.TabIndex = 1;
             // 
             // label4
             // 
@@ -269,5 +285,6 @@
         private CheckedListBox alternativasCheckedList;
         private Button btnAdd;
         private Button brnRemover;
+        private Label label5;
     }
 }
