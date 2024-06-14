@@ -75,7 +75,6 @@ namespace Gerador_de_Testes.ModoloDisciplina
 
         public override void Excluir()
         {
-            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm("Edição de Disciplina", RepositorioDisciplina);
 
             int idSelecionado = TabelaDisciplina.ObterRegistroSelecionado();
 
@@ -91,6 +90,9 @@ namespace Gerador_de_Testes.ModoloDisciplina
                 );
                 return;
             }
+
+            if (disciplinaSelecionada.Materias.Count() != 0)
+                return;
 
             DialogResult resposta = MessageBox.Show(
                $"Você deseja realmente excluir a diciplina \"{disciplinaSelecionada.Nome}\"?",
