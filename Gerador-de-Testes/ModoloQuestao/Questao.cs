@@ -1,5 +1,6 @@
 ﻿using Gerador_de_Testes.ModoloMateria;
 using Gerador_de_Testes.WinApp.Compartilhado;
+using Gerador_de_Testes.WinApp.ModoloMateria;
 
 namespace Gerador_de_Testes.ModoloQuestoes
 {
