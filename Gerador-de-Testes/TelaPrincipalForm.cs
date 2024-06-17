@@ -15,8 +15,7 @@ namespace Gerador_de_Testes
         //Repositorios
         IRepositorioDisciplina repositorioDisciplina;
         IRepositorioMateria repositorioMateria;
-        IRepositorioQuestao repositorioQuestao
-        IRepositorioDisciplina repositorioDisciplina;
+        IRepositorioQuestao repositorioQuestao;
 
         public static TelaPrincipalForm Instancia { get; private set; }
         public TelaPrincipalForm()
