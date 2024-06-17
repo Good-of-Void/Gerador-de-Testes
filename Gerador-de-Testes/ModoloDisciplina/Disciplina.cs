@@ -6,7 +6,7 @@ namespace Gerador_de_Testes.ModoloDisciplina
     public class Disciplina : EntidadeBase
     {
         //Variaveis da classe
-        public string Nome { get; set; }
+        public string Nome {  get; set; }
         public List<Materia> Materias { get; set; }
 
         //Construtor completo
@@ -25,8 +25,8 @@ namespace Gerador_de_Testes.ModoloDisciplina
             if (string.IsNullOrEmpty(this.Nome))
                 erros.Add("O campo 'Nome' é obrigatório");
 
-            if (this.Nome.Length < 3)
-                erros.Add("O campo 'Nome' deve conter no mínimo 3 caracteres");
+            if(this.Nome.Length < 3)
+                    erros.Add("O campo 'Nome' deve conter no mínimo 3 caracteres");
 
             return erros;
         }

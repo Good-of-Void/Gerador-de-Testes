@@ -1,3 +1,4 @@
+using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.WinApp.Compartilhado;
 
 namespace Gerador_de_Testes
@@ -5,8 +6,10 @@ namespace Gerador_de_Testes
     public partial class TelaPrincipalForm : Form
     {
         ControladorBase controlador;
-
         ContextoDados contexto;
+
+        //Repositorios
+        IRepositorioDisciplina repositorioDisciplina;
 
         public static TelaPrincipalForm Instancia { get; private set; }
         public TelaPrincipalForm()
@@ -17,6 +20,9 @@ namespace Gerador_de_Testes
             Instancia = this;
 
             contexto = new ContextoDados(carregarDados: true);
+
+            this.repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
+
         }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
@@ -61,7 +67,9 @@ namespace Gerador_de_Testes
         //Telas
         private void stripMenuDisciplina_Click(object sender, EventArgs e)
         {
+            this.controlador = new ControladorDisciplina(repositorioDisciplina);
 
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void stripMenuMateria_Click(object sender, EventArgs e)
