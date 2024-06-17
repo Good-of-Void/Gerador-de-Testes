@@ -1,5 +1,9 @@
 using Gerador_de_Testes.ModoloDisciplina;
+using Gerador_de_Testes.ModoloMateria;
+using Gerador_de_Testes.ModoloQuestao;
+using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.WinApp.Compartilhado;
+using Gerador_de_Testes.WinApp.ModoloMateria;
 
 namespace Gerador_de_Testes
 {
@@ -9,6 +13,9 @@ namespace Gerador_de_Testes
         ContextoDados contexto;
 
         //Repositorios
+        IRepositorioDisciplina repositorioDisciplina;
+        IRepositorioMateria repositorioMateria;
+        IRepositorioQuestao repositorioQuestao
         IRepositorioDisciplina repositorioDisciplina;
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -21,6 +28,9 @@ namespace Gerador_de_Testes
 
             contexto = new ContextoDados(carregarDados: true);
 
+            this.repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
+            this.repositorioMateria = new RepositorioMateriaEmArquivo(contexto);
+            this.repositorioQuestao = new RepositorioQuestaoEmArquivo(contexto);
             this.repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
 
         }
@@ -79,7 +89,9 @@ namespace Gerador_de_Testes
 
         private void stripMenuQuestoes_Click(object sender, EventArgs e)
         {
+            this.controlador = new ControladorQuestao(repositorioQuestao,repositorioMateria);
 
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void stripMenuTeste_Click(object sender, EventArgs e)
@@ -102,5 +114,9 @@ namespace Gerador_de_Testes
         {
             this.controlador.Excluir();
         }
+
+        //testes
+
+        
     }
 }
