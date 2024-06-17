@@ -10,6 +10,7 @@ namespace Gerador_de_Testes.WinApp.ModoloMateria
         public string Nome { get; set; }
         public Disciplina Disciplina { get; set; }
         public string Serie { get; set; }
+        public bool TemQuestoes { get; set; }
 
         public Materia()
         {
@@ -21,6 +22,7 @@ namespace Gerador_de_Testes.WinApp.ModoloMateria
             Nome = nome;
             Disciplina = disciplina;
             Serie = serie;
+            TemQuestoes = false;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
