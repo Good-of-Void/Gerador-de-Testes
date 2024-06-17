@@ -1,5 +1,6 @@
 ﻿using Gerador_de_Testes.WinApp.Compartilhado;
 using Gerador_de_Testes.ModoloDisciplina;
+using Gerador_de_Testes.ModoloQuestoes;
 
 
 namespace Gerador_de_Testes.WinApp.ModoloMateria
@@ -10,7 +11,7 @@ namespace Gerador_de_Testes.WinApp.ModoloMateria
         public string Nome { get; set; }
         public Disciplina Disciplina { get; set; }
         public string Serie { get; set; }
-        public bool TemQuestoes { get; set; }
+        public List<Questao> Questoes { get; set; }
 
         public Materia()
         {
@@ -22,7 +23,7 @@ namespace Gerador_de_Testes.WinApp.ModoloMateria
             Nome = nome;
             Disciplina = disciplina;
             Serie = serie;
-            TemQuestoes = false;
+            Questoes = new List<Questao>();
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
@@ -45,8 +46,8 @@ namespace Gerador_de_Testes.WinApp.ModoloMateria
             if (string.IsNullOrEmpty(Serie))
                 erros.Add("O campo 'Série' é obrigatório");
 
-            if (Nome.Length < 5)
-                erros.Add("O campo 'Nome' deve ter 5 caracteres");
+            if (Nome.Length < 3)
+                erros.Add("O campo 'Nome' deve ter no minimo 3 caracteres");
 
             return erros;
         }

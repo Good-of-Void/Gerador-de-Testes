@@ -26,7 +26,7 @@ namespace Gerador_de_Testes.ModoloMateria
 
         public override void Adicionar()
         {
-            TelaMateriaForm telaMateria = new TelaMateriaForm("Cadastro de Materia",repositorioDisciplina);
+            TelaMateriaForm telaMateria = new TelaMateriaForm("Cadastro de Materia",repositorioMateria,repositorioDisciplina);
 
             DialogResult resultado = telaMateria.ShowDialog();
 
@@ -36,6 +36,7 @@ namespace Gerador_de_Testes.ModoloMateria
             Materia novaMateria = telaMateria.Materia;
 
             this.repositorioMateria.Cadastrar(novaMateria);
+            this.AddEmDisciplina(novaMateria);
 
             CarregarDadosTabela();
 
@@ -44,7 +45,7 @@ namespace Gerador_de_Testes.ModoloMateria
 
         public override void Editar()
         {
-            TelaMateriaForm telaMateria = new TelaMateriaForm("Cadastro de Materia", repositorioDisciplina);
+            TelaMateriaForm telaMateria = new TelaMateriaForm("Cadastro de Materia", repositorioMateria, repositorioDisciplina);
 
             int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
 
@@ -70,7 +71,13 @@ namespace Gerador_de_Testes.ModoloMateria
 
             Materia materiaEditada = telaMateria.Materia;
 
+            this.EditarEmDisciplina(MateriaSelecionada, materiaEditada);
+
             repositorioMateria.Editar(MateriaSelecionada.Id, materiaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A materia \"{materiaEditada.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()
@@ -90,8 +97,12 @@ namespace Gerador_de_Testes.ModoloMateria
                 return;
             }
 
-            if (materiaSelecionada.TemQuestoes)
+            if (materiaSelecionada.Questoes.Count != 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possivel excluir a materia pois tem questões cadastradas nela");
                 return;
+            }
+                
 
             DialogResult resposta = MessageBox.Show(
                $"Você deseja realmente excluir a materia \"{materiaSelecionada.Nome}\"?",
@@ -103,6 +114,7 @@ namespace Gerador_de_Testes.ModoloMateria
             if (resposta != DialogResult.Yes)
                 return;
 
+            this.ExcluirEmDisciplina(materiaSelecionada);
             repositorioMateria.Excluir(materiaSelecionada.Id);
 
             CarregarDadosTabela();
@@ -125,6 +137,42 @@ namespace Gerador_de_Testes.ModoloMateria
             List<Materia> materias = repositorioMateria.SelecionarTodos();
 
             tabelaMateria.AtualizarRegistros(materias);
+        }
+        private void AddEmDisciplina(Materia mate)
+        {
+            List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
+
+            foreach (Disciplina d in disciplinas)
+            {
+                if(mate.Disciplina.Equals(d))
+                    d.Materias.Add(mate);
+            }
+        }
+
+        private void EditarEmDisciplina(Materia mateSele,Materia mateEditada)
+        {
+            this.ExcluirEmDisciplina(mateSele);
+            this.AddEmDisciplina(mateEditada);
+        }
+
+        private void ExcluirEmDisciplina(Materia mate)
+        {
+            List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
+
+            foreach (Disciplina d in disciplinas)
+            {
+                if (mate.Disciplina.Id.Equals(d.Id))
+                {
+                    foreach (Materia m in d.Materias)
+                    {
+                        if (mate.Id.Equals(m.Id))
+                        {
+                            d.Materias.Remove(m);
+                            return;
+                        }
+                    }
+                }
+            }
         }
     }
 }

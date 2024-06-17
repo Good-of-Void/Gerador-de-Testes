@@ -1,5 +1,6 @@
 ﻿using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.WinApp.ModoloMateria;
+using System.Diagnostics;
 
 namespace Gerador_de_Testes.ModoloMateria
 {
@@ -7,12 +8,15 @@ namespace Gerador_de_Testes.ModoloMateria
     {
         private Materia materia;
         private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioMateria repositorioMateria;
         private List<string> erros;
+        private Materia materiaAntiga;
 
         public Materia Materia
         {
-            set 
+            set
             {
+                this.materiaAntiga = value;
                 this.txtId.Text = value.Id.ToString();
                 this.txtNome.Text = value.Nome.ToString();
 
@@ -24,33 +28,47 @@ namespace Gerador_de_Testes.ModoloMateria
                     }
                 }
 
-                if(value.Serie.Equals("1ª Serie"))
+                if (value.Serie.Equals("1ª Serie"))
                 {
-                    this.chb1.Checked = true;
-                    this.chb2.Checked = false;
+                    this.rbn1.Checked = true;
+                    this.rbn2.Checked = false;
                 }
                 else
                 {
-                    this.chb1.Checked = false;
-                    this.chb2.Checked = true;
+                    this.rbn1.Checked = false;
+                    this.rbn2.Checked = true;
                 }
             }
-            get 
-            { 
-                return materia; 
+            get
+            {
+                return materia;
             }
         }
 
-        public TelaMateriaForm(string tipo, IRepositorioDisciplina repositorio)
+        public TelaMateriaForm(string tipo, IRepositorioMateria materia, IRepositorioDisciplina disciplina)
         {
             InitializeComponent();
             this.Text = tipo;
-            this.repositorioDisciplina = repositorio;
+            this.repositorioDisciplina = disciplina;
+            this.repositorioMateria = materia;
+            this.carregarDisciplinas();
+            this.cboxDisciplina.SelectedIndex = 0;
+            this.rbn1.Checked = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
             this.EntradaDados();
+
+            if (erros.Count > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+                this.txtNome.Text = null;
+                return;
+            }
+            DialogResult = DialogResult.OK;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -62,7 +80,7 @@ namespace Gerador_de_Testes.ModoloMateria
         {
             //pegar disciplina
             List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
-            Disciplina disciplinaSelecionada= null;
+            Disciplina disciplinaSelecionada = null;
 
             foreach (Disciplina d in disciplinas)
             {
@@ -71,13 +89,32 @@ namespace Gerador_de_Testes.ModoloMateria
             }
 
             //pegar a serie
-            string serie;
-            if(this.chb1.Equals(true))
-                serie = this.chb1.Text;
+            string serie = null;
+            if (this.rbn1.Checked.Equals(true))
+                serie = this.rbn1.Text;
             else
-                serie = this.chb2.Text;
+                serie = this.rbn2.Text;
 
             this.materia = new(this.txtNome.Text, disciplinaSelecionada, serie);
+
+            erros = materia.Validar();
+
+            List<Materia> materias = repositorioMateria.SelecionarTodos();
+            
+            if(materias.Equals(this.materia))
+                materias.Remove(this.materia);
+
+            foreach (Materia m in materias)
+            {
+                if (!m.Equals(materiaAntiga))
+                {
+                    if (materia.Nome.Equals(m.Nome))
+                    {
+                        erros.Add($"Materia com mesmo nome ja cadastrada");
+                        return;
+                    }
+                }      
+            }
         }
 
         private void carregarDisciplinas()

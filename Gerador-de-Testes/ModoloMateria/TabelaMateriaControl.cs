@@ -20,7 +20,7 @@ namespace Gerador_de_Testes.ModoloMateria
             grid.Rows.Clear();
 
             foreach (Materia m in Materias)
-                grid.Rows.Add(m.Id, m.Nome, m.Disciplina.Nome,m.TemQuestoes);
+                grid.Rows.Add(m.Id, m.Nome, m.Disciplina.Nome,m.Serie,m.Questoes.Count());
         }
 
         public int ObterRegistroSelecionado()
@@ -35,7 +35,8 @@ namespace Gerador_de_Testes.ModoloMateria
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Materia" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Disciplina", HeaderText = "Disciplina" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Questoes", HeaderText = "Possui Questões" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Serie", HeaderText = "Serie" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Questoes", HeaderText = "Questões" },
                         };
         }
     }

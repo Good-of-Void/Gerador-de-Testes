@@ -30,7 +30,6 @@ namespace Gerador_de_Testes
             this.repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
             this.repositorioMateria = new RepositorioMateriaEmArquivo(contexto);
             this.repositorioQuestao = new RepositorioQuestaoEmArquivo(contexto);
-            this.repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
 
         }
 
@@ -83,7 +82,9 @@ namespace Gerador_de_Testes
 
         private void stripMenuMateria_Click(object sender, EventArgs e)
         {
+            this.controlador = new ControladorMateria(repositorioMateria,repositorioDisciplina);
 
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void stripMenuQuestoes_Click(object sender, EventArgs e)

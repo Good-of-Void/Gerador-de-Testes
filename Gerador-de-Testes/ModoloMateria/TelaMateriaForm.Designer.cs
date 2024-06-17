@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnGravar = new Button();
-            btnCancelar = new Button();
-            txtNome = new TextBox();
-            label2 = new Label();
-            txtId = new TextBox();
-            label1 = new Label();
-            label3 = new Label();
+            rbn2 = new RadioButton();
+            rbn1 = new RadioButton();
             cboxDisciplina = new ComboBox();
+            btnCancelar = new Button();
+            btnGravar = new Button();
+            txtId = new TextBox();
+            txtNome = new TextBox();
+            label1 = new Label();
             label4 = new Label();
-            chb1 = new CheckBox();
-            chb2 = new CheckBox();
+            label3 = new Label();
+            label2 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(57, 62, 70);
-            panel1.Controls.Add(chb2);
-            panel1.Controls.Add(chb1);
+            panel1.Controls.Add(rbn2);
+            panel1.Controls.Add(rbn1);
             panel1.Controls.Add(cboxDisciplina);
             panel1.Controls.Add(btnCancelar);
             panel1.Controls.Add(btnGravar);
@@ -62,18 +62,42 @@
             panel1.Size = new Size(592, 426);
             panel1.TabIndex = 0;
             // 
-            // btnGravar
+            // rbn2
             // 
-            btnGravar.FlatAppearance.BorderSize = 0;
-            btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
-            btnGravar.Location = new Point(297, 366);
-            btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 4;
-            btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
-            btnGravar.Click += btnGravar_Click;
+            rbn2.AutoSize = true;
+            rbn2.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rbn2.ForeColor = Color.FromArgb(0, 173, 181);
+            rbn2.Location = new Point(273, 275);
+            rbn2.Name = "rbn2";
+            rbn2.Size = new Size(115, 35);
+            rbn2.TabIndex = 6;
+            rbn2.TabStop = true;
+            rbn2.Text = "2ª Serie";
+            rbn2.UseVisualStyleBackColor = true;
+            // 
+            // rbn1
+            // 
+            rbn1.AutoSize = true;
+            rbn1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rbn1.ForeColor = Color.FromArgb(0, 173, 181);
+            rbn1.Location = new Point(156, 273);
+            rbn1.Name = "rbn1";
+            rbn1.Size = new Size(111, 35);
+            rbn1.TabIndex = 6;
+            rbn1.TabStop = true;
+            rbn1.Text = "1ª Serie";
+            rbn1.UseVisualStyleBackColor = true;
+            // 
+            // cboxDisciplina
+            // 
+            cboxDisciplina.BackColor = Color.FromArgb(238, 238, 238);
+            cboxDisciplina.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cboxDisciplina.ForeColor = Color.FromArgb(0, 173, 181);
+            cboxDisciplina.FormattingEnabled = true;
+            cboxDisciplina.Location = new Point(156, 190);
+            cboxDisciplina.Name = "cboxDisciplina";
+            cboxDisciplina.Size = new Size(304, 39);
+            cboxDisciplina.TabIndex = 1;
             // 
             // btnCancelar
             // 
@@ -88,26 +112,18 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // txtNome
+            // btnGravar
             // 
-            txtNome.BackColor = Color.FromArgb(238, 238, 238);
-            txtNome.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtNome.ForeColor = Color.FromArgb(0, 173, 181);
-            txtNome.Location = new Point(156, 109);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(421, 39);
-            txtNome.TabIndex = 0;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(0, 173, 181);
-            label2.Location = new Point(59, 112);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 32);
-            label2.TabIndex = 0;
-            label2.Text = "Nome";
+            btnGravar.FlatAppearance.BorderSize = 0;
+            btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
+            btnGravar.Location = new Point(297, 366);
+            btnGravar.Name = "btnGravar";
+            btnGravar.Size = new Size(130, 48);
+            btnGravar.TabIndex = 4;
+            btnGravar.Text = "Gravar";
+            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // txtId
             // 
@@ -121,6 +137,16 @@
             txtId.TabIndex = 1;
             txtId.Text = "0";
             // 
+            // txtNome
+            // 
+            txtNome.BackColor = Color.FromArgb(238, 238, 238);
+            txtNome.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNome.ForeColor = Color.FromArgb(0, 173, 181);
+            txtNome.Location = new Point(156, 109);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(421, 39);
+            txtNome.TabIndex = 0;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -131,28 +157,6 @@
             label1.Size = new Size(37, 32);
             label1.TabIndex = 0;
             label1.Text = "Id";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(0, 173, 181);
-            label3.Location = new Point(23, 193);
-            label3.Name = "label3";
-            label3.Size = new Size(127, 32);
-            label3.TabIndex = 0;
-            label3.Text = "Disciplina";
-            // 
-            // cboxDisciplina
-            // 
-            cboxDisciplina.BackColor = Color.FromArgb(238, 238, 238);
-            cboxDisciplina.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cboxDisciplina.ForeColor = Color.FromArgb(0, 173, 181);
-            cboxDisciplina.FormattingEnabled = true;
-            cboxDisciplina.Location = new Point(156, 190);
-            cboxDisciplina.Name = "cboxDisciplina";
-            cboxDisciplina.Size = new Size(304, 39);
-            cboxDisciplina.TabIndex = 1;
             // 
             // label4
             // 
@@ -165,29 +169,27 @@
             label4.TabIndex = 0;
             label4.Text = "Serie";
             // 
-            // chb1
+            // label3
             // 
-            chb1.AutoSize = true;
-            chb1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chb1.ForeColor = Color.FromArgb(0, 173, 181);
-            chb1.Location = new Point(156, 274);
-            chb1.Name = "chb1";
-            chb1.Size = new Size(112, 35);
-            chb1.TabIndex = 2;
-            chb1.Text = "1ª Serie";
-            chb1.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(0, 173, 181);
+            label3.Location = new Point(23, 193);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 32);
+            label3.TabIndex = 0;
+            label3.Text = "Disciplina";
             // 
-            // chb2
+            // label2
             // 
-            chb2.AutoSize = true;
-            chb2.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chb2.ForeColor = Color.FromArgb(0, 173, 181);
-            chb2.Location = new Point(274, 274);
-            chb2.Name = "chb2";
-            chb2.Size = new Size(116, 35);
-            chb2.TabIndex = 3;
-            chb2.Text = "2ª Serie";
-            chb2.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(0, 173, 181);
+            label2.Location = new Point(59, 112);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 32);
+            label2.TabIndex = 0;
+            label2.Text = "Nome";
             // 
             // TelaMateriaForm
             // 
@@ -217,8 +219,8 @@
         private Label label2;
         private ComboBox cboxDisciplina;
         private Label label3;
-        private CheckBox chb2;
-        private CheckBox chb1;
         private Label label4;
+        private RadioButton rbn2;
+        private RadioButton rbn1;
     }
 }
