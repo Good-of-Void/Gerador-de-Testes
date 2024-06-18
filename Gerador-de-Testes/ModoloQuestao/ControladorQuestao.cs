@@ -1,6 +1,8 @@
-﻿using Gerador_de_Testes.ModoloMateria;
+﻿using Gerador_de_Testes.ModoloDisciplina;
+using Gerador_de_Testes.ModoloMateria;
 using Gerador_de_Testes.ModoloQuestoes;
 using Gerador_de_Testes.WinApp.Compartilhado;
+using Gerador_de_Testes.WinApp.ModoloMateria;
 
 namespace Gerador_de_Testes.ModoloQuestao
 {
@@ -34,6 +36,8 @@ namespace Gerador_de_Testes.ModoloQuestao
                 return;
 
             Questao novaQuestao = telaQuestao.Questao;
+
+            this.AddEmMateria(novaQuestao);
 
             this.RepositorioQuestao.Cadastrar(novaQuestao);
 
@@ -71,6 +75,8 @@ namespace Gerador_de_Testes.ModoloQuestao
 
             Questao questaoEditada = telaQuestao.Questao;
 
+            this.EditarEmMateria(questaoSelecionada, questaoEditada);
+
             RepositorioQuestao.Editar(questaoSelecionada.Id, questaoEditada);
 
             CarregarDadosTabela();
@@ -106,6 +112,8 @@ namespace Gerador_de_Testes.ModoloQuestao
             if (resposta != DialogResult.Yes)
                 return;
 
+            this.ExcluirEmMateria(questaoSelecionada);
+
             RepositorioQuestao.Excluir(questaoSelecionada.Id);
 
             CarregarDadosTabela();
@@ -128,6 +136,43 @@ namespace Gerador_de_Testes.ModoloQuestao
             List<Questao> questoes = RepositorioQuestao.SelecionarTodos();
 
             tabelaQuestao.AtualizarRegistros(questoes);
+        }
+
+        private void AddEmMateria(Questao questao)
+        {
+            List<Materia> materias = RepositorioMateria.SelecionarTodos();
+
+            foreach (Materia m in materias)
+            {
+                if (questao.Materia.Equals(m))
+                    d.Materias.Add(questao);
+            }
+        }
+
+        private void EditarEmMateria(Questao questaoSele, Questao questaoEditada)
+        {
+            this.ExcluirEmMateria(questaoSele);
+            this.AddEmMateria(questaoEditada);
+        }
+
+        private void ExcluirEmMateria(Questao questao)
+        {
+            List<Materia> materias = RepositorioMateria.SelecionarTodos();
+
+            foreach (Materia m in materias)
+            {
+                if (questao.Materia.Id.Equals(m.Id))
+                {
+                    foreach (Questao q in m.Questoes)
+                    {
+                        if (questao.Id.Equals(q.Id))
+                        {
+                            m.Questoes.Remove(q);
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
     }
