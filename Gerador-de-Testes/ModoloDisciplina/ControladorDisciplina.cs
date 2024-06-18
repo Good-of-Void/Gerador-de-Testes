@@ -38,6 +38,11 @@ namespace Gerador_de_Testes.ModoloDisciplina
             TelaPrincipalForm.Instancia.AtualizarRodape($"A disciplina \"{novaDisciplina.Nome}\" foi criado com sucesso!");
         }
 
+        public override void Dublicar()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Editar()
         {
             TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm("Edição de Disciplina", RepositorioDisciplina);
@@ -119,6 +124,11 @@ namespace Gerador_de_Testes.ModoloDisciplina
             CarregarDadosTabela();
 
             return TabelaDisciplina;
+        }
+
+        public override void PDF()
+        {
+            throw new NotImplementedException();
         }
 
         private void CarregarDadosTabela()

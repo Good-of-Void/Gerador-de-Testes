@@ -13,5 +13,7 @@
         public abstract void Adicionar();
         public abstract void Editar();
         public abstract void Excluir();
+        public abstract void Dublicar();
+        public abstract void PDF();
     }
 }

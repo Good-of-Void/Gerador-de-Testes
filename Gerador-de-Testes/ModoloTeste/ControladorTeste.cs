@@ -178,5 +178,20 @@ namespace Gerador_de_Testes.ModoloTeste
                 
             }
         }
+
+        public override void Dublicar()
+        {
+            MessageBox.Show(
+                     "Não é possível realizar esta ação sem uma disciplina selecionada.",
+                     "Aviso",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Warning
+                 );
+        }
+
+        public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

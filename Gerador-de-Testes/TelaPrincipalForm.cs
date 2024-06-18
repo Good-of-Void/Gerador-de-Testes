@@ -1,9 +1,7 @@
 using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.ModoloMateria;
 using Gerador_de_Testes.ModoloQuestao;
-using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.WinApp.Compartilhado;
-using Gerador_de_Testes.WinApp.ModoloMateria;
 using Gerador_de_Testes.ModoloTeste;
 
 namespace Gerador_de_Testes
@@ -26,6 +24,10 @@ namespace Gerador_de_Testes
 
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
+
+            this.btnDuplicar.Visible = false;
+            this.btnPDF.Visible = false;
+            this.Separator2.Visible = false;
 
             contexto = new ContextoDados(carregarDados: true);
 
@@ -85,23 +87,27 @@ namespace Gerador_de_Testes
 
         private void stripMenuMateria_Click(object sender, EventArgs e)
         {
-            this.controlador = new ControladorMateria(repositorioMateria,repositorioDisciplina);
+            this.controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void stripMenuQuestoes_Click(object sender, EventArgs e)
         {
-            this.controlador = new ControladorQuestao(repositorioQuestao,repositorioMateria);
+            this.controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void stripMenuTeste_Click(object sender, EventArgs e)
         {
-            this.controlador = new ControladorTeste(repositorioDisciplina, repositorioMateria, repositorioQuestao,repositorioTeste);
+            this.controlador = new ControladorTeste(repositorioDisciplina, repositorioMateria, repositorioQuestao, repositorioTeste);
 
             ConfigurarTelaPrincipal(controlador);
+
+            this.btnDuplicar.Visible = true;
+            this.btnPDF.Visible = true;
+            this.Separator2.Visible = true;
         }
 
         //Botões
@@ -120,8 +126,14 @@ namespace Gerador_de_Testes
             this.controlador.Excluir();
         }
 
-        //testes
+        private void btnDuplicar_Click(object sender, EventArgs e)
+        {
+            this.controlador.Dublicar();
+        }
 
-        
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            this.controlador.PDF();
+        }
     }
 }

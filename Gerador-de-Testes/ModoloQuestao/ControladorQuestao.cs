@@ -178,5 +178,14 @@ namespace Gerador_de_Testes.ModoloQuestao
             }
         }
 
+        public override void Dublicar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

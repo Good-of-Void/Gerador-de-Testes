@@ -39,6 +39,9 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
+            btnDuplicar = new ToolStripButton();
+            btnPDF = new ToolStripButton();
+            Separator2 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
@@ -50,6 +53,7 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = Color.FromArgb(57, 62, 70);
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { telasToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
@@ -62,14 +66,17 @@
             // 
             telasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { stripMenuDisciplina, stripMenuMateria, stripMenuQuestoes, stripMenuTeste });
             telasToolStripMenuItem.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            telasToolStripMenuItem.Image = Properties.Resources.computador;
+            telasToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
+            telasToolStripMenuItem.Image = Properties.Resources.computador1;
             telasToolStripMenuItem.Name = "telasToolStripMenuItem";
             telasToolStripMenuItem.Size = new Size(90, 32);
             telasToolStripMenuItem.Text = "Telas";
             // 
             // stripMenuDisciplina
             // 
-            stripMenuDisciplina.Image = Properties.Resources.pilha_de_tres_livros;
+            stripMenuDisciplina.BackColor = Color.FromArgb(57, 62, 70);
+            stripMenuDisciplina.ForeColor = Color.FromArgb(0, 173, 181);
+            stripMenuDisciplina.Image = Properties.Resources.livro;
             stripMenuDisciplina.Name = "stripMenuDisciplina";
             stripMenuDisciplina.Size = new Size(193, 32);
             stripMenuDisciplina.Text = "Disciplinas";
@@ -77,7 +84,9 @@
             // 
             // stripMenuMateria
             // 
-            stripMenuMateria.Image = Properties.Resources.abra_o_livro;
+            stripMenuMateria.BackColor = Color.FromArgb(57, 62, 70);
+            stripMenuMateria.ForeColor = Color.FromArgb(0, 173, 181);
+            stripMenuMateria.Image = Properties.Resources.pilha_de_livros;
             stripMenuMateria.Name = "stripMenuMateria";
             stripMenuMateria.Size = new Size(193, 32);
             stripMenuMateria.Text = "Materias";
@@ -85,7 +94,9 @@
             // 
             // stripMenuQuestoes
             // 
-            stripMenuQuestoes.Image = Properties.Resources.questoes;
+            stripMenuQuestoes.BackColor = Color.FromArgb(57, 62, 70);
+            stripMenuQuestoes.ForeColor = Color.FromArgb(0, 173, 181);
+            stripMenuQuestoes.Image = Properties.Resources.teste1;
             stripMenuQuestoes.Name = "stripMenuQuestoes";
             stripMenuQuestoes.Size = new Size(193, 32);
             stripMenuQuestoes.Text = "Questões";
@@ -93,7 +104,9 @@
             // 
             // stripMenuTeste
             // 
-            stripMenuTeste.Image = Properties.Resources.teste;
+            stripMenuTeste.BackColor = Color.FromArgb(57, 62, 70);
+            stripMenuTeste.ForeColor = Color.FromArgb(0, 173, 181);
+            stripMenuTeste.Image = Properties.Resources.teste__1_;
             stripMenuTeste.Name = "stripMenuTeste";
             stripMenuTeste.Size = new Size(193, 32);
             stripMenuTeste.Text = "Testes";
@@ -101,9 +114,10 @@
             // 
             // toolStrip1
             // 
+            toolStrip1.BackColor = Color.FromArgb(34, 40, 49);
             toolStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(40, 40);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdd, btnEditar, btnExcluir, toolStripSeparator1, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdd, btnEditar, btnExcluir, toolStripSeparator1, btnDuplicar, btnPDF, Separator2, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 36);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(905, 54);
@@ -115,7 +129,7 @@
             btnAdd.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnAdd.Enabled = false;
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Image = Properties.Resources.adicionar_ficheiro;
+            btnAdd.Image = Properties.Resources.adicionar_ficheiro__2_;
             btnAdd.ImageTransparentColor = Color.Magenta;
             btnAdd.Margin = new Padding(5);
             btnAdd.Name = "btnAdd";
@@ -127,7 +141,7 @@
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnEditar.Enabled = false;
-            btnEditar.Image = Properties.Resources.btnEditar;
+            btnEditar.Image = Properties.Resources.editar;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(44, 51);
@@ -138,7 +152,7 @@
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnExcluir.Enabled = false;
-            btnExcluir.Image = Properties.Resources.btnExcluir;
+            btnExcluir.Image = Properties.Resources.arquivo;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(44, 51);
@@ -147,17 +161,46 @@
             // 
             // toolStripSeparator1
             // 
+            toolStripSeparator1.ForeColor = Color.FromArgb(0, 173, 181);
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 54);
             // 
+            // btnDuplicar
+            // 
+            btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDuplicar.Image = Properties.Resources.documentos;
+            btnDuplicar.ImageTransparentColor = Color.Magenta;
+            btnDuplicar.Name = "btnDuplicar";
+            btnDuplicar.Size = new Size(44, 51);
+            btnDuplicar.Text = "Dublicar teste";
+            btnDuplicar.Click += btnDuplicar_Click;
+            // 
+            // btnPDF
+            // 
+            btnPDF.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnPDF.Image = Properties.Resources.btnPDF;
+            btnPDF.ImageTransparentColor = Color.Magenta;
+            btnPDF.Name = "btnPDF";
+            btnPDF.Size = new Size(44, 51);
+            btnPDF.Text = "Baixar PDF do teste";
+            btnPDF.Click += btnPDF_Click;
+            // 
+            // Separator2
+            // 
+            Separator2.Name = "Separator2";
+            Separator2.Size = new Size(6, 54);
+            // 
             // lblTipoCadastro
             // 
+            lblTipoCadastro.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTipoCadastro.ForeColor = Color.FromArgb(0, 173, 181);
             lblTipoCadastro.Name = "lblTipoCadastro";
-            lblTipoCadastro.Size = new Size(116, 51);
+            lblTipoCadastro.Size = new Size(162, 51);
             lblTipoCadastro.Text = "Tipo Cadastro";
             // 
             // statusStrip1
             // 
+            statusStrip1.BackColor = Color.FromArgb(34, 40, 49);
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
             statusStrip1.Location = new Point(0, 527);
@@ -169,12 +212,14 @@
             // statusLabelPrincipal
             // 
             statusLabelPrincipal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statusLabelPrincipal.ForeColor = Color.FromArgb(0, 173, 181);
             statusLabelPrincipal.Name = "statusLabelPrincipal";
             statusLabelPrincipal.Size = new Size(167, 28);
             statusLabelPrincipal.Text = "Gerador de Testes";
             // 
             // pnlRegistros
             // 
+            pnlRegistros.BackColor = Color.FromArgb(57, 62, 70);
             pnlRegistros.Dock = DockStyle.Fill;
             pnlRegistros.Location = new Point(0, 90);
             pnlRegistros.Name = "pnlRegistros";
@@ -190,6 +235,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -223,5 +269,8 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel lblTipoCadastro;
         private Panel pnlRegistros;
+        private ToolStripButton btnDuplicar;
+        private ToolStripButton btnPDF;
+        private ToolStripSeparator Separator2;
     }
 }

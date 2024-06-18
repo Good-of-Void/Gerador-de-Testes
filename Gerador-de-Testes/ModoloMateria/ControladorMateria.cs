@@ -174,5 +174,15 @@ namespace Gerador_de_Testes.ModoloMateria
                 }
             }
         }
+
+        public override void Dublicar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

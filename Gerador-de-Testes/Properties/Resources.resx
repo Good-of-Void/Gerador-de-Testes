@@ -118,20 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="teste1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teste1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="livro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\livro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnAdicionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnAdicionar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="adicionar-ficheiro (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-ficheiro (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="teste" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\teste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnExcluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnExcluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arquivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arquivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="teste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="teste (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teste (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="questoes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\questoes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,16 +151,34 @@
   <data name="pilha-de-tres-livros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pilha-de-tres-livros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="computador" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\computador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="adicionar-ficheiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adicionar-ficheiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="abra-o-livro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\abra-o-livro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="adicionar-ficheiro (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adicionar-ficheiro (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="computador1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\computador1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="adicionar-ficheiro (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adicionar-ficheiro (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pilha-de-livros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pilha-de-livros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="editar-arquivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editar-arquivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="computador" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\computador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnPDF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnPDF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documentos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\documentos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
