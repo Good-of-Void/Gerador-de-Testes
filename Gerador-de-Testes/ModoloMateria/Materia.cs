@@ -13,6 +13,11 @@ namespace Gerador_de_Testes.WinApp.ModoloMateria
         public string Serie { get; set; }
         public List<Questao> Questoes { get; set; }
 
+        public string NomeESerie
+        {
+            get { return Nome + ", " + "Série " + Serie; }
+        }
+
         public Materia()
         {
 

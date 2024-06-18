@@ -20,7 +20,7 @@ namespace Gerador_de_Testes.ModoloTeste
             grid.Rows.Clear();
 
             foreach (Teste t in testes)
-                grid.Rows.Add(t.Id, t.Titulo, t.Materia,t.Disciplina,t.Questoes.Count());
+                grid.Rows.Add(t.Id, t.Titulo, t.Materia.Nome,t.Disciplina.Nome,t.Questoes.Count());
         }
 
         public int ObterRegistroSelecionado()

@@ -4,7 +4,6 @@ using Gerador_de_Testes.ModoloQuestao;
 using Gerador_de_Testes.ModoloQuestoes;
 using Gerador_de_Testes.ModoloTestes;
 using Gerador_de_Testes.WinApp.Compartilhado;
-using Gerador_de_Testes.WinApp.ModoloMateria;
 
 namespace Gerador_de_Testes.ModoloTeste
 {
@@ -34,7 +33,7 @@ namespace Gerador_de_Testes.ModoloTeste
 
         public override void Adicionar()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm();
+            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina,repositorioMateria,repositorioQuestao);
 
             DialogResult resultado = telaTeste.ShowDialog();
 
@@ -53,7 +52,7 @@ namespace Gerador_de_Testes.ModoloTeste
 
         public override void Editar()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm();
+            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina, repositorioMateria, repositorioQuestao);
 
             int idSelecionado = TabelaTeste.ObterRegistroSelecionado();
 

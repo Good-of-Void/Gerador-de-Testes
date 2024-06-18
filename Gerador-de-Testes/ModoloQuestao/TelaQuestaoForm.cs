@@ -97,8 +97,6 @@ namespace Gerador_de_Testes.ModoloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-
-
             this.EntradaDados();
 
             if (erros.Count > 0)

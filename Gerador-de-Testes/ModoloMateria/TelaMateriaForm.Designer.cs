@@ -33,13 +33,13 @@
             rbn1 = new RadioButton();
             cboxDisciplina = new ComboBox();
             btnCancelar = new Button();
-            btnGravar = new Button();
             txtId = new TextBox();
             txtNome = new TextBox();
             label1 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            btnGravar = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,8 +49,8 @@
             panel1.Controls.Add(rbn2);
             panel1.Controls.Add(rbn1);
             panel1.Controls.Add(cboxDisciplina);
-            panel1.Controls.Add(btnCancelar);
             panel1.Controls.Add(btnGravar);
+            panel1.Controls.Add(btnCancelar);
             panel1.Controls.Add(txtId);
             panel1.Controls.Add(txtNome);
             panel1.Controls.Add(label1);
@@ -111,19 +111,6 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
-            // 
-            // btnGravar
-            // 
-            btnGravar.FlatAppearance.BorderSize = 0;
-            btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
-            btnGravar.Location = new Point(297, 366);
-            btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 4;
-            btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
-            btnGravar.Click += btnGravar_Click;
             // 
             // txtId
             // 
@@ -191,6 +178,19 @@
             label2.TabIndex = 0;
             label2.Text = "Nome";
             // 
+            // btnGravar
+            // 
+            btnGravar.FlatAppearance.BorderSize = 0;
+            btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
+            btnGravar.Location = new Point(311, 366);
+            btnGravar.Name = "btnGravar";
+            btnGravar.Size = new Size(130, 48);
+            btnGravar.TabIndex = 4;
+            btnGravar.Text = "Gravar";
+            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
+            // 
             // TelaMateriaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -212,7 +212,6 @@
 
         private Panel panel1;
         private Button btnCancelar;
-        private Button btnGravar;
         private TextBox txtId;
         private TextBox txtNome;
         private Label label1;
@@ -222,5 +221,6 @@
         private Label label4;
         private RadioButton rbn2;
         private RadioButton rbn1;
+        private Button btnGravar;
     }
 }

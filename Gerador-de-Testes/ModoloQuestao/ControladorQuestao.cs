@@ -148,7 +148,7 @@ namespace Gerador_de_Testes.ModoloQuestao
             foreach (Materia m in materias)
             {
                 if (questao.Materia.Equals(m))
-                    d.Materias.Add(questao);
+                    m.Questoes.Add(questao);
             }
         }
 

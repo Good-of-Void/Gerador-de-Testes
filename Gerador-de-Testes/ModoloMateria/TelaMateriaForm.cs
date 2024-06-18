@@ -1,6 +1,5 @@
 ﻿using Gerador_de_Testes.ModoloDisciplina;
 using Gerador_de_Testes.WinApp.ModoloMateria;
-using System.Diagnostics;
 
 namespace Gerador_de_Testes.ModoloMateria
 {
@@ -70,10 +69,9 @@ namespace Gerador_de_Testes.ModoloMateria
             }
             DialogResult = DialogResult.OK;
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;  
         }
 
         private void EntradaDados()
@@ -100,8 +98,8 @@ namespace Gerador_de_Testes.ModoloMateria
             erros = materia.Validar();
 
             List<Materia> materias = repositorioMateria.SelecionarTodos();
-            
-            if(materias.Equals(this.materia))
+
+            if (materias.Equals(this.materia))
                 materias.Remove(this.materia);
 
             foreach (Materia m in materias)
@@ -113,7 +111,7 @@ namespace Gerador_de_Testes.ModoloMateria
                         erros.Add($"Materia com mesmo nome ja cadastrada");
                         return;
                     }
-                }      
+                }
             }
         }
 
@@ -128,5 +126,7 @@ namespace Gerador_de_Testes.ModoloMateria
                 this.cboxDisciplina.Items.Add(d.Nome);
             }
         }
+
+       
     }
 }
