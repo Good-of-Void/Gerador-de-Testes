@@ -102,6 +102,9 @@ namespace Gerador_de_Testes.ModoloQuestao
                 return;
             }
 
+            if (questaoSelecionada.Testes.Count != 0)
+                return;
+
             DialogResult resposta = MessageBox.Show(
                $"Você deseja realmente excluir a questão \"{questaoSelecionada.Enunciado}\"?",
                "Confirmar Exclusão",

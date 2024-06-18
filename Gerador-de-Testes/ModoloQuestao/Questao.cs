@@ -1,4 +1,5 @@
-﻿using Gerador_de_Testes.WinApp.Compartilhado;
+﻿using Gerador_de_Testes.ModoloTestes;
+using Gerador_de_Testes.WinApp.Compartilhado;
 using Gerador_de_Testes.WinApp.ModoloMateria;
 
 namespace Gerador_de_Testes.ModoloQuestoes
@@ -9,7 +10,7 @@ namespace Gerador_de_Testes.ModoloQuestoes
         public string Enunciado { get; set; }
         public string Resposta { get; set; }
         public List<string> Alternativas { get; set; }
-        public bool Usada { get; set; }
+        public List<Teste> Testes { get; set; }
 
         //contrutor completo
         public Questao(Materia materia, string enunciado, string resposta, List<string> alternativas)
@@ -18,7 +19,7 @@ namespace Gerador_de_Testes.ModoloQuestoes
             Enunciado = enunciado;
             Resposta = resposta;
             Alternativas = alternativas;
-            Usada = false;
+            Testes = new List<Teste>();
         }
 
         //contrutor vazil
