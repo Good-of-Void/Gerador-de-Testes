@@ -4,6 +4,11 @@ using Gerador_de_Testes.ModoloQuestao;
 using Gerador_de_Testes.ModoloQuestoes;
 using Gerador_de_Testes.ModoloTestes;
 using Gerador_de_Testes.WinApp.Compartilhado;
+using System.IO;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Drawing.Imaging;
 
 namespace Gerador_de_Testes.ModoloTeste
 {
@@ -121,6 +126,74 @@ namespace Gerador_de_Testes.ModoloTeste
             TelaPrincipalForm.Instancia.AtualizarRodape($"O teste \"{testeSelecionado.Titulo}\" foi excluido com sucesso!");
         }
 
+        public override void Dublicar()
+        {
+            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina, repositorioMateria, repositorioQuestao);
+
+            int idSelecionado = TabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma disciplina selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaTeste.Dublicado = true;
+
+            telaTeste.Teste = testeSelecionado;
+
+            DialogResult resultado = telaTeste.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Teste novoTeste = telaTeste.Teste;
+
+            this.repositorioTeste.Cadastrar(novoTeste);
+            this.AddEmQuestao(novoTeste);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O teste \"{novoTeste.Titulo}\" foi criado com sucesso!");
+        }
+
+        public override void PDF()
+        {
+            int idSelecionado = TabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(idSelecionado);
+
+            Document doc = new Document(PageSize.A4);
+            doc.SetMargins(40, 40, 40, 80);
+            doc.AddCreationDate();
+
+            string caminho = @"C:\temp\GeradorTestes\" + $"{testeSelecionado.Titulo}.pdf";
+
+            PdfWriter branco = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
+
+            doc.Open();
+
+            string dados = "";
+
+            Paragraph paragrafo = new Paragraph(dados);
+
+            paragrafo.Alignment = Element.ALIGN_JUSTIFIED;
+
+            paragrafo.Add(this.SaidaPDF(testeSelecionado));
+
+            doc.Add(paragrafo);
+
+            doc.Close();
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O teste \"{testeSelecionado.Titulo}\" foi criado com sucesso! no local: {caminho}");
+        }
+
         public override UserControl ObterListagem()
         {
             if (TabelaTeste == null)
@@ -179,19 +252,27 @@ namespace Gerador_de_Testes.ModoloTeste
             }
         }
 
-        public override void Dublicar()
+        private string SaidaPDF(Teste teste)
         {
-            MessageBox.Show(
-                     "Não é possível realizar esta ação sem uma disciplina selecionada.",
-                     "Aviso",
-                     MessageBoxButtons.OK,
-                     MessageBoxIcon.Warning
-                 );
+            string prova = $"{teste.Titulo}\n\nNome:\n\n\n";
+
+            for (int i = 0; i < teste.Questoes.Count; i++)
+            {
+                prova += $"{i + 1}) {teste.Questoes[i].Enunciado}\n\n";
+
+                for (int j = 0; j < teste.Questoes[i].Alternativas.Count(); j++)
+                {
+                    prova += $"     {teste.Questoes[i].Alternativas[j]}\n";
+                }
+
+                prova += $"\n\n";
+            }
+
+            prova += "Bom Teste!!";
+
+                return prova;
         }
 
-        public override void PDF()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -18,6 +18,7 @@ namespace Gerador_de_Testes.ModoloTeste
         List<Questao> listaQuestoesSelecionada = new List<Questao>();
         private List<string> erros;
         private Teste teste;
+        public bool Dublicado = false;
         public Teste Teste
         {
             set
@@ -52,6 +53,10 @@ namespace Gerador_de_Testes.ModoloTeste
                 }
 
                 this.listaQuestoesSelecionada = value.Questoes;
+
+                if(Dublicado)
+                    listaQuestoesSelecionada.Clear();
+
                 this.CarregarDadosTabela();
 
             }
