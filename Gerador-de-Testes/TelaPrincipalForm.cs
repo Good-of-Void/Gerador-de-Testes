@@ -25,9 +25,7 @@ namespace Gerador_de_Testes
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            this.btnDuplicar.Visible = false;
-            this.btnPDF.Visible = false;
-            this.Separator2.Visible = false;
+            DesiblitarMenus();
 
             contexto = new ContextoDados(carregarDados: true);
 
@@ -83,6 +81,7 @@ namespace Gerador_de_Testes
             this.controlador = new ControladorDisciplina(repositorioDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
+            DesiblitarMenus();
         }
 
         private void stripMenuMateria_Click(object sender, EventArgs e)
@@ -90,6 +89,7 @@ namespace Gerador_de_Testes
             this.controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
+            DesiblitarMenus();
         }
 
         private void stripMenuQuestoes_Click(object sender, EventArgs e)
@@ -97,6 +97,7 @@ namespace Gerador_de_Testes
             this.controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);
+            DesiblitarMenus();
         }
 
         private void stripMenuTeste_Click(object sender, EventArgs e)
@@ -134,6 +135,13 @@ namespace Gerador_de_Testes
         private void btnPDF_Click(object sender, EventArgs e)
         {
             this.controlador.PDF();
+        }
+
+        private void DesiblitarMenus()
+        {
+            this.btnDuplicar.Visible = false;
+            this.btnPDF.Visible = false;
+            this.Separator2.Visible = false;
         }
     }
 }

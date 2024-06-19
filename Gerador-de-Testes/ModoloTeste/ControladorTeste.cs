@@ -38,7 +38,7 @@ namespace Gerador_de_Testes.ModoloTeste
 
         public override void Adicionar()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina,repositorioMateria,repositorioQuestao);
+            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina,repositorioMateria,repositorioQuestao,repositorioTeste);
 
             DialogResult resultado = telaTeste.ShowDialog();
 
@@ -57,7 +57,7 @@ namespace Gerador_de_Testes.ModoloTeste
 
         public override void Editar()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina, repositorioMateria, repositorioQuestao);
+            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina, repositorioMateria, repositorioQuestao, repositorioTeste);
 
             int idSelecionado = TabelaTeste.ObterRegistroSelecionado();
 
@@ -128,7 +128,7 @@ namespace Gerador_de_Testes.ModoloTeste
 
         public override void Dublicar()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina, repositorioMateria, repositorioQuestao);
+            TelaTesteForm telaTeste = new TelaTesteForm(repositorioDisciplina, repositorioMateria, repositorioQuestao, repositorioTeste);
 
             int idSelecionado = TabelaTeste.ObterRegistroSelecionado();
 

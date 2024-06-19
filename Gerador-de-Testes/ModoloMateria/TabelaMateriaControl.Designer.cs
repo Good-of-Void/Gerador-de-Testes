@@ -34,6 +34,7 @@
             // 
             // grid
             // 
+            grid.BackgroundColor = Color.FromArgb(57, 62, 70);
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);
@@ -42,12 +43,12 @@
             grid.Size = new Size(575, 365);
             grid.TabIndex = 0;
             // 
-            // TabelaMateriaControl1
+            // TabelaMateriaControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaMateriaControl1";
+            Name = "TabelaMateriaControl";
             Size = new Size(575, 365);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);

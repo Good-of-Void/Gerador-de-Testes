@@ -8,21 +8,22 @@
 
             DataGridViewCellStyle linhaEscura = new DataGridViewCellStyle
             {
-                BackColor = Color.LightBlue,
-                Font = font,
-                ForeColor = Color.Black,
-                SelectionBackColor = Color.LightGreen,
-                SelectionForeColor = Color.Black
+                BackColor = Color.FromArgb(57, 62, 70),
+                Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
+                ForeColor = Color.FromArgb(0, 173, 181),
+                SelectionBackColor = Color.FromArgb(0, 173, 181),
+                SelectionForeColor = Color.FromArgb(238, 238, 238)
             };
 
             grid.AlternatingRowsDefaultCellStyle = linhaEscura;
 
             DataGridViewCellStyle linhaClara = new DataGridViewCellStyle
             {
-                BackColor = Color.White,
-                Font = font,
-                SelectionBackColor = Color.LightGreen,
-                SelectionForeColor = Color.Black
+                BackColor = Color.FromArgb(238, 238, 238),
+                Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
+                ForeColor = Color.FromArgb(0, 173, 181),
+                SelectionBackColor = Color.FromArgb(0, 173, 181),
+                SelectionForeColor = Color.FromArgb(238, 238, 238)
             };
 
             grid.RowsDefaultCellStyle = linhaClara;

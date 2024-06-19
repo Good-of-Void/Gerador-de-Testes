@@ -13,16 +13,20 @@ namespace Gerador_de_Testes.ModoloTeste
         private IRepositorioDisciplina repositorioDisciplina;
         private IRepositorioMateria repositorioMateria;
         private IRepositorioQuestao repositorioQuestao;
+        private IRepositorioTeste repositorioTeste;
 
         private Random random;
         List<Questao> listaQuestoesSelecionada = new List<Questao>();
         private List<string> erros;
         private Teste teste;
+        private Teste testeAntiga;
         public bool Dublicado = false;
         public Teste Teste
         {
             set
             {
+                this.testeAntiga = value;
+
                 this.txtTitulo.Text = value.Titulo;
 
                 if (value.Titulo.Contains("Recuperação"))
@@ -66,7 +70,7 @@ namespace Gerador_de_Testes.ModoloTeste
             }
         }
         //contrutor
-        public TelaTesteForm(IRepositorioDisciplina disciplina, IRepositorioMateria materia, IRepositorioQuestao questao)
+        public TelaTesteForm(IRepositorioDisciplina disciplina, IRepositorioMateria materia, IRepositorioQuestao questao,IRepositorioTeste teste)
         {
             InitializeComponent();
 
@@ -74,6 +78,7 @@ namespace Gerador_de_Testes.ModoloTeste
             this.repositorioDisciplina = disciplina;
             this.repositorioMateria = materia;
             this.repositorioQuestao = questao;
+            this.repositorioTeste = teste;
 
             this.cboxDisciplina.DisplayMember = "Nome";
             this.cboxMateria.DisplayMember = "NomeESerie";
@@ -230,8 +235,26 @@ namespace Gerador_de_Testes.ModoloTeste
                 PegarDisciplina(),
                 PegarMateria(),
                 this.listaQuestoesSelecionada
-                );     
+                );
+            
             erros = teste.Validar();
+
+            List<Teste> testes = repositorioTeste.SelecionarTodos();
+
+            if(testes.Equals(this.teste))
+                testes.Remove(this.teste);
+
+            foreach (Teste t in testes)
+            {
+                if (!t.Equals(testeAntiga))
+                {
+                    if (teste.Titulo.Equals(t.Titulo))
+                    {
+                        erros.Add($"Teste com mesmo titulo ja cadastrada");
+                        return;
+                    }
+                }
+            }
         }
 
         private Disciplina PegarDisciplina()
