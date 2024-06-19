@@ -170,11 +170,26 @@ namespace Gerador_de_Testes.ModoloTeste
 
             Teste testeSelecionado = repositorioTeste.SelecionarPorId(idSelecionado);
 
-            Document doc = new Document(PageSize.A4);
-            doc.SetMargins(40, 40, 40, 80);
-            doc.AddCreationDate();
+            Document Teste = new Document(PageSize.A4);
+            Teste.SetMargins(40, 40, 40, 80);
+            Teste.AddCreationDate();
+            CriarPdf(testeSelecionado, Teste,false);
+            
+            Document gabarito = new Document(PageSize.A4);
+            gabarito.SetMargins(40, 40, 40, 80);
+            gabarito.AddCreationDate();
+            CriarPdf(testeSelecionado, gabarito,true);
 
-            string caminho = @"C:\temp\GeradorTestes\" + $"{testeSelecionado.Titulo}.pdf";
+            
+        }
+
+        private void CriarPdf(Teste testeSelecionado, Document doc,bool gabarito)
+        {
+            string caminho;
+            if (gabarito)
+                caminho = @"C:\temp\GeradorTestes\" + $"{testeSelecionado.Titulo}Gabarito.pdf";
+            else
+                caminho = @"C:\temp\GeradorTestes\" + $"{testeSelecionado.Titulo}.pdf";
 
             PdfWriter branco = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
 
@@ -185,12 +200,16 @@ namespace Gerador_de_Testes.ModoloTeste
             Paragraph paragrafo = new Paragraph(dados);
 
             paragrafo.Alignment = Element.ALIGN_JUSTIFIED;
-
-            paragrafo.Add(this.SaidaPDF(testeSelecionado));
+            
+            if(gabarito)
+                paragrafo.Add(this.SaidaPDFGabarito(testeSelecionado));
+            else
+                paragrafo.Add(this.SaidaPDFAluno(testeSelecionado));
 
             doc.Add(paragrafo);
 
             doc.Close();
+
             TelaPrincipalForm.Instancia.AtualizarRodape($"O teste \"{testeSelecionado.Titulo}\" foi criado com sucesso! no local: {caminho}");
         }
 
@@ -252,9 +271,9 @@ namespace Gerador_de_Testes.ModoloTeste
             }
         }
 
-        private string SaidaPDF(Teste teste)
+        private string SaidaPDFAluno(Teste teste)
         {
-            string prova = $"{teste.Titulo}\n\nNome:\n\n\n";
+            string prova = $"{teste.Titulo}\n{teste.Disciplina.Nome}: {teste.Materia.Nome}\nNome:\n\n\n";
 
             for (int i = 0; i < teste.Questoes.Count; i++)
             {
@@ -273,6 +292,30 @@ namespace Gerador_de_Testes.ModoloTeste
                 return prova;
         }
 
-        
+        private string SaidaPDFGabarito(Teste teste)
+        {
+            string prova = $"{teste.Titulo}\n{teste.Disciplina.Nome}: {teste.Materia.Nome}\nGabarito!!\n\n\n";
+
+            for (int i = 0; i < teste.Questoes.Count; i++)
+            {
+                prova += $"{i + 1}) {teste.Questoes[i].Enunciado}\n\n";
+
+                for (int j = 0; j < teste.Questoes[i].Alternativas.Count(); j++)
+                {
+                    if (teste.Questoes[i].Alternativas[j].Equals(teste.Questoes[i].Resposta))
+                        prova += $"--> {teste.Questoes[i].Alternativas[j]}\n";
+                    else
+                        prova += $"     {teste.Questoes[i].Alternativas[j]}\n";
+                }
+
+                prova += $"\n\n";
+            }
+
+            prova += "Bom Teste!!";
+
+            return prova;
+        }
+
+
     }
 }
